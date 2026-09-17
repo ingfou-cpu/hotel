@@ -1,0 +1,11 @@
+/* Tailwind CSS v4 — utilities layer only.
+   Preflight (base reset) is deliberately NOT imported: this app ships its own
+   design system in global.css (unlayered, so it stays dominant), and pulling in
+   Tailwind's reset would fight it. We only need Tailwind's utilities for
+   shadcn-style components (e.g. src/components/ui/stack-spread.tsx). */
+@layer theme, utilities;
+
+@source "../";
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);

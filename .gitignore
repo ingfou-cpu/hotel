@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+*.log
+
+# Environnement / secrets
+.env
+
+# Outils / IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs de dev / artefacts run
+_startdev-test.log
+_startdev-test.log.err
+_vite.log
+_vite.err
+_server*.log
+_server.err
+_pytest_hbp.log
+_pytest_hbp.err
