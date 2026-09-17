@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Grove — Footer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    :root{
+      --ink:#175A67;
+      --ink-soft:#2A707C;
+      --cream:#EAE3DE;
+      --max:1440px;
+      --fs-nav:clamp(.9rem,.55vw+.75rem,1.02rem);
+    }
+    body{
+      margin:0;
+      font-family:Poppins,"Helvetica Neue",Arial,sans-serif;
+      background:var(--cream);
+      color:var(--ink);
+      line-height:1.5;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+    .site-footer{
+      position:relative;
+      isolation:isolate;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      min-height:100svh;
+      overflow:hidden;
+      overflow-wrap:break-word;
+      background:var(--cream);
+      padding:clamp(2.25rem,4.5vh,4rem)
+        max(clamp(1.25rem,4vw,4.5rem),env(safe-area-inset-right))
+        max(clamp(1.5rem,3vh,2.75rem),env(safe-area-inset-bottom))
+        max(clamp(1.25rem,4vw,4.5rem),env(safe-area-inset-left));
+    }
+    .footer-media{
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+    }
+    .footer-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center bottom;
+      pointer-events:none;
+      animation:fade-in 1.35s ease both;
+    }
+    .footer-inner{
+      position:relative;
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    .footer-grid{
+      display:grid;
+      align-items:start;
+      gap:clamp(1.5rem,3vw,3.25rem);
+      grid-template-columns:minmax(240px,1.45fr) repeat(3,minmax(130px,.85fr)) minmax(260px,1.25fr);
+    }
+    .brand-lockup{
+      display:flex;
+      align-items:center;
+      gap:clamp(.65rem,1vw,1rem);
+    }
+    .brand-mark{
+      width:clamp(52px,4.4vw,74px);
+      height:auto;
+    }
+    .brand-name{
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-weight:500;
+      font-size:clamp(1.85rem,2.5vw,2.9rem);
+      line-height:1;
+      margin:0;
+    }
+    .brand-blurb{
+      margin-top:clamp(1.15rem,2.4vh,1.9rem);
+      max-width:24ch;
+      line-height:1.62;
+    }
+    .contact-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      margin-top:clamp(1.15rem,2.4vh,1.9rem);
+      display:flex;
+      flex-direction:column;
+      gap:clamp(.6rem,1.2vh,.95rem);
+    }
+    .contact-list li{
+      display:flex;
+      align-items:center;
+      gap:.85rem;
+    }
+    .contact-list svg{
+      width:19px;
+      height:19px;
+      flex-shrink:0;
+    }
+    .contact-list a{
+      color:var(--ink);
+      text-decoration:none;
+      transition:text-decoration .2s ease;
+    }
+    .contact-list a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .col-title{
+      margin:0 0 clamp(1.15rem,2.4vh,1.85rem);
+      font-size:clamp(.95rem,.5vw+.8rem,1.12rem);
+      font-weight:600;
+      letter-spacing:.055em;
+      text-transform:uppercase;
+    }
+    .link-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:clamp(.62rem,1.35vh,1.05rem);
+    }
+    .link-list a{
+      color:var(--ink);
+      text-decoration:none;
+      display:inline-block;
+      transition:opacity .2s ease,transform .2s ease;
+    }
+    .link-list a:hover{
+      opacity:.62;
+      transform:translateX(2px);
+    }
+    .newsletter p{
+      margin:0 0 clamp(1rem,2.2vh,1.6rem);
+      max-width:32ch;
+      line-height:1.62;
+    }
+    .subscribe{
+      display:flex;
+      width:100%;
+      max-width:380px;
+      border:1px solid var(--ink);
+      background:rgba(255,255,255,.4);
+    }
+    .subscribe input{
+      flex:1;
+      min-width:0;
+      border:0;
+      outline:0;
+      background:transparent;
+      padding:.95rem 1.05rem;
+      font-family:inherit;
+      font-size:var(--fs-nav);
+      color:var(--ink);
+    }
+    .subscribe input::placeholder{
+      color:var(--ink-soft);
+      opacity:.85;
+    }
+    .subscribe input:focus-visible{
+      box-shadow:inset 0 0 0 2px rgba(23,90,103,.25);
+    }
+    .subscribe button{
+      width:clamp(56px,4vw,66px);
+      border:0;
+      background:var(--ink);
+      color:var(--cream);
+      display:grid;
+      place-items:center;
+      transition:background .2s ease;
+      cursor:pointer;
+    }
+    .subscribe button:hover{
+      background:#0F454F;
+    }
+    .subscribe button svg{
+      width:22px;
+      height:22px;
+    }
+    .footer-bottom{
+      margin-top:auto;
+      padding-top:clamp(2.5rem,6vh,4.5rem);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.25rem 2rem;
+      flex-wrap:wrap;
+    }
+    .socials{
+      display:flex;
+      gap:clamp(.9rem,1.5vw,1.5rem);
+    }
+    .socials a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--ink);
+      transition:opacity .2s ease,transform .2s ease;
+    }
+    .socials svg{
+      width:26px;
+      height:26px;
+    }
+    .socials a:hover{
+      opacity:.65;
+      transform:translateY(-2px);
+    }
+    .legal{
+      display:flex;
+      gap:clamp(1.15rem,2.6vw,3rem);
+      flex-wrap:wrap;
+    }
+    .legal a{
+      color:var(--ink);
+      text-decoration:none;
+      transition:text-decoration .2s ease;
+    }
+    .legal a:hover{
+      text-decoration:underline;
+    }
+    @keyframes rise-in{
+      from{opacity:0;transform:translate3d(0,14px,0)}
+      to{opacity:1;transform:translate3d(0,0,0)}
+    }
+    @keyframes fade-in{
+      from{opacity:0}
+      to{opacity:1}
+    }
+    .footer-bg{
+      animation:fade-in 1.35s ease both;
+    }
+    .brand-lockup,
+    .brand-blurb,
+    .contact-list li,
+    .col .col-title,
+    .col .link-list li,
+    .newsletter .col-title,
+    .newsletter p,
+    .subscribe,
+    .socials a,
+    .legal a{
+      animation:rise-in .72s cubic-bezier(.22,1,.36,1) both;
+    }
+    .brand-lockup{animation-delay:.04s}
+    .brand-blurb{animation-delay:.12s}
+    .contact-list li:nth-child(1){animation-delay:.2s}
+    .contact-list li:nth-child(2){animation-delay:.28s}
+    .contact-list li:nth-child(3){animation-delay:.36s}
+    .footer-grid > .col:nth-child(2){--col-stagger:.16s}
+    .footer-grid > .col:nth-child(3){--col-stagger:.24s}
+    .footer-grid > .col:nth-child(4){--col-stagger:.32s}
+    .col .col-title{animation-delay:var(--col-stagger,.2s)}
+    .col .link-list li:nth-child(1){animation-delay:calc(var(--col-stagger,.2s) + .08s)}
+    .col .link-list li:nth-child(2){animation-delay:calc(var(--col-stagger,.2s) + .16s)}
+    .col .link-list li:nth-child(3){animation-delay:calc(var(--col-stagger,.2s) + .24s)}
+    .col .link-list li:nth-child(4){animation-delay:calc(var(--col-stagger,.2s) + .32s)}
+    .col .link-list li:nth-child(5){animation-delay:calc(var(--col-stagger,.2s) + .4s)}
+    .col .link-list li:nth-child(6){animation-delay:calc(var(--col-stagger,.2s) + .48s)}
+    .newsletter .col-title{animation-delay:.4s}
+    .newsletter p{animation-delay:.48s}
+    .subscribe{animation-delay:.56s}
+    .socials a:nth-child(1){animation-delay:.64s}
+    .socials a:nth-child(2){animation-delay:.7s}
+    .socials a:nth-child(3){animation-delay:.76s}
+    .socials a:nth-child(4){animation-delay:.82s}
+    .legal a:nth-child(1){animation-delay:.7s}
+    .legal a:nth-child(2){animation-delay:.78s}
+    .legal a:nth-child(3){animation-delay:.86s}
+
+    @media (max-width:1100px){
+      .footer-grid{
+        grid-template-columns:1fr 1fr 1fr;
+        row-gap:clamp(2rem,4vh,2.75rem);
+      }
+      .brand,
+      .newsletter{
+        grid-column:1 / -1;
+      }
+      .brand-blurb{
+        max-width:42ch;
+      }
+    }
+
+    @media (max-width:720px){
+      .site-footer{
+        height:auto;
+        min-height:100svh;
+        padding-right:0;
+        padding-bottom:0;
+        padding-left:0;
+        overflow-x:hidden;
+        overflow-y:visible;
+      }
+      .footer-inner{
+        order:0;
+        padding-right:max(clamp(1.25rem,4vw,4.5rem),env(safe-area-inset-right));
+        padding-left:max(clamp(1.25rem,4vw,4.5rem),env(safe-area-inset-left));
+        padding-bottom:clamp(1.25rem,3vh,2rem);
+      }
+      .footer-media{
+        position:relative;
+        inset:auto;
+        order:1;
+        flex-shrink:0;
+        width:100%;
+        height:auto;
+        margin-top:auto;
+        z-index:0;
+      }
+      .footer-bg{
+        position:relative;
+        inset:auto;
+        width:100%;
+        height:auto;
+        max-width:100%;
+        object-fit:contain;
+        object-position:center bottom;
+        transform:none;
+        display:block;
+      }
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+        gap:clamp(1.75rem,5vw,2.25rem);
+      }
+      .brand-blurb{
+        max-width:34ch;
+      }
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:1.5rem;
+        padding-top:clamp(2rem,7vh,3rem);
+        padding-bottom:clamp(1.25rem,3vh,2rem);
+      }
+      .legal{
+        gap:1.1rem 1.5rem;
+      }
+      .link-list{gap:.2rem}
+      .link-list a{padding:.55rem 0}
+      .contact-list{gap:.25rem}
+      .contact-list a,
+      .contact-list span{padding:.4rem 0}
+      .legal a{padding:.45rem 0}
+      .socials a{padding:.3rem;margin:-.3rem}
+      .socials svg{width:28px;height:28px}
+      .subscribe input{
+        font-size:16px;
+        padding:1rem 1.05rem;
+      }
+    }
+
+    @media (max-width:440px){
+      :root{--fs-nav:.92rem}
+      .footer-grid{gap:1.35rem 1.25rem}
+      .col-title{margin-bottom:.85rem}
+      .brand-blurb,
+      .newsletter p{max-width:none}
+      .subscribe{max-width:none}
+    }
+
+    @media (max-width:359px){
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (min-width:721px) and (max-width:1100px){
+      .site-footer{
+        height:auto;
+        min-height:100svh;
+        padding-right:0;
+        padding-bottom:0;
+        padding-left:0;
+        overflow-x:hidden;
+        overflow-y:visible;
+      }
+      .footer-inner{
+        order:0;
+        padding-right:max(clamp(1.25rem,4vw,4.5rem),env(safe-area-inset-right));
+        padding-left:max(clamp(1.25rem,4vw,4.5rem),env(safe-area-inset-left));
+        padding-bottom:clamp(1.25rem,3vh,2rem);
+      }
+      .footer-media{
+        position:relative;
+        inset:auto;
+        order:1;
+        flex-shrink:0;
+        width:100%;
+        height:auto;
+        margin-top:auto;
+        z-index:0;
+      }
+      .footer-bg{
+        position:relative;
+        inset:auto;
+        width:100%;
+        height:auto;
+        max-width:100%;
+        object-fit:contain;
+        object-position:center bottom;
+        transform:none;
+        display:block;
+      }
+    }
+
+    @media (max-width:1100px){
+      .footer-media::after{
+        content:"";
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        height:clamp(52px,16vw,120px);
+        pointer-events:none;
+        z-index:1;
+        background:linear-gradient(to bottom,#EAE3DE 0%,rgba(234,227,222,.65) 38%,rgba(234,227,222,0) 100%);
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .footer-bg{
+        display:none;
+        animation:none;
+      }
+      .site-footer{
+        background-color:#EAE3DE;
+        background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/4f690bd1-881a-4192-82f2-d714d34c8fb9.png");
+        background-position:center bottom;
+        background-size:cover;
+        background-repeat:no-repeat;
+      }
+      @media (max-width:1100px){
+        .site-footer{
+          background-size:100% auto;
+        }
+      }
+      .footer-media::after{
+        content:none;
+      }
+      .brand-lockup,
+      .brand-blurb,
+      .contact-list li,
+      .col .col-title,
+      .col .link-list li,
+      .newsletter .col-title,
+      .newsletter p,
+      .subscribe,
+      .socials a,
+      .legal a{
+        animation:none;
+      }
+      .link-list a:hover,
+      .socials a:hover{
+        transform:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <footer class="site-footer">
+    <div class="footer-media" aria-hidden="true">
+      <video class="footer-bg" autoplay muted loop playsinline preload="auto" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/4f690bd1-881a-4192-82f2-d714d34c8fb9.png">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260901_122529_931c22c8-8d2d-47c0-ad51-b97f56a91e42.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="brand">
+          <div class="brand-lockup">
+            <svg class="brand-mark" viewBox="0 0 96 120" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <ellipse cx="48" cy="60" rx="45" ry="57"/>
+              <path d="M48 88V46" stroke-linecap="round"/>
+              <path d="M48 58c-8-2-14-8-16-16 9 0 15 5 16 16Zm0 0c8-2 14-8 16-16-9 0-15 5-16 16Z"/>
+              <path d="M48 74c-9-2-15-8-17-17 10 0 16 6 17 17Zm0 0c9-2 15-8 17-17-10 0-16 6-17 17Z"/>
+              <path d="M48 46c-6-3-9-9-8-16 6 3 9 9 8 16Zm0 0c6-3 9-9 8-16-6 3-9 9-8 16Z"/>
+              <path d="M30 44c-5 1-9-1-12-5 5-2 9-1 12 5Zm36 0c5 1 9-1 12-5-5-2-9-1-12 5Z"/>
+            </svg>
+            <h1 class="brand-name">Heritage Grove</h1>
+          </div>
+          <p class="brand-blurb">Crafting digital experiences that connect, delight, and leave a lasting imprint</p>
+          <ul class="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:care@heritage.com">care@heritage.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a5.03 5.03 0 0 1 2.11-1.31c2.49-.49 4.65-.23 6.14.72a32.47 32.47 0 0 0 4.85 1.94 1 1 0 0 0 1.42-.42 22.58 22.58 0 0 0 1.71-7.75 1 1 0 0 0-.42-1.44 31.89 31.89 0 0 0-1.94-4.85 5.03 5.03 0 0 1-1.31-2.11L6.62 10.79zm5.76-6.76a1 1 0 0 1 1.41 0l2.2 2.2a5.03 5.03 0 0 1 1.31 2.11c.49 2.49.23 4.65-.72 6.14a32.47 32.47 0 0 1-1.94 4.85 1 1 0 0 1-1.42.42 22.58 22.58 0 0 1-7.75-1.71 1 1 0 0 1-.42-1.44 31.89 31.89 0 0 1 4.85-1.94 5.03 5.03 0 0 1 2.11-1.31l2.2-2.2a1 1 0 0 1 0-1.41l-2.3-2.3a5.03 5.03 0 0 1-2.11-1.31c-.49-2.49-.23-4.65.72-6.14a32.47 32.47 0 0 0-4.85-1.94 1 1 0 0 1-.42-1.42 22.58 22.58 0 0 0 1.71-7.75 1 1 0 0 1 .42-1.44 31.89 31.89 0 0 0 1.94-4.85 5.03 5.03 0 0 0-1.31-2.11l-2.2-2.2a1 1 0 0 1 0-1.41l2.3-2.3a5.03 5.03 0 0 1 2.11-1.31c2.49-.49 4.65-.23 6.14.72a32.47 32.47 0 0 1 4.85 1.94 1 1 0 0 1 1.42.42 22.58 22.58 0 0 1 1.71 7.75 1 1 0 0 1-.42 1.44 31.89 31.89 0 0 1-1.94 4.85 5.03 5.03 0 0 0-2.11 1.31l-2.2 2.2a1 1 0 0 1-1.41 0l-2.3-2.3a5.03 5.03 0 0 0-2.11 1.31c-.49 2.49-.23 4.65.72 6.14a32.47 32.47 0 0 0 4.85 1.94 1 1 0 0 0 1.42-.42 22.58 22.58 0 0 0 1.71-7.75 1 1 0 0 0-.42-1.44 31.89 31.89 0 0 0-1.94-4.85 5.03 5.03 0 0 0-2.11-1.31l-2.2-2.2z"/></svg>
+              <a href="tel:+910000000000">+91 00000 00000</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>India</span>
+            </li>
+          </ul>
+        </div>
+        <nav class="col" aria-label="Shop">
+          <h2 class="col-title">Shop</h2>
+          <ul class="link-list">
+            <li><a href="#">Full Collection</a></li>
+            <li><a href="#">Vases</a></li>
+            <li><a href="#">Tableware</a></li>
+            <li><a href="#">Decor</a></li>
+            <li><a href="#">Limited Releases</a></li>
+            <li><a href="#">Gift Sets</a></li>
+          </ul>
+        </nav>
+        <nav class="col" aria-label="Heritage">
+          <h2 class="col-title">Heritage</h2>
+          <ul class="link-list">
+            <li><a href="#">Our Roots</a></li>
+            <li><a href="#">Our Craftwork</a></li>
+            <li><a href="#">Responsibility</a></li>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="#">Media Enquiry</a></li>
+          </ul>
+        </nav>
+        <nav class="col" aria-label="Care and service">
+          <h2 class="col-title">Care & Service</h2>
+          <ul class="link-list">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Shipping & Dispatch</a></li>
+            <li><a href="#">Where&rsquo;s My Order</a></li>
+            <li><a href="#">Talk To Us</a></li>
+          </ul>
+        </nav>
+        <div class="newsletter">
+          <h2 class="col-title">The Letter</h2>
+          <p>Sign up for early notice on new arrivals, stories & members-only offers.</p>
+          <form class="subscribe" action="#" method="post">
+            <label for="nl-email" class="sr-only">Email address</label>
+            <input id="nl-email" type="email" name="email" placeholder="Leave your email" autocomplete="email" required>
+            <button type="submit" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h15M13 6l6 6-6 6"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><line x1="16" y1="8" x2="16" y2="8"/><line x1="8" y1="8" x2="8" y2="8"/><line x1="12" y1="12" x2="12" y2="16"/><path d="M4 4h16v16H4V4z"/></svg>
+          </a>
+        </div>
+        <nav class="legal" aria-label="Legal">
+          <a href="#">Privacy Notice</a>
+          <a href="#">Terms & Policies</a>
+          <a href="#">Cookie Notice</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
